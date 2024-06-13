@@ -15,7 +15,7 @@ defmodule JswatchWeb.IndigloManager do
     timer = Process.send_after(self(), Waiting_IndigloOff, 2000)
     {:noreply, %{state | st: Waiting, timer1: timer}}
   end
-  def handle_info(:"top-left-pressed", %{ui_pid: pid} = state) do
+  def handle_info(:"top-left-pressed", state) do
     :gproc.send({:p, :l, :ui_event}, :update_alarm)
     {:noreply, state}
   end
