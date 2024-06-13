@@ -10,7 +10,7 @@ defmodule JswatchWeb.ClockManager do
     {:ok, %{ui_pid: ui, time: time, alarm: alarm, st: Working}}
   end
 
-  def handle_cast(:update_alarm, state) do
+  def handle_info(:update_alarm, state) do
     {_, now} = :calendar.local_time()
     time = Time.from_erl!(now)
     alarm = Time.add(time, 5)

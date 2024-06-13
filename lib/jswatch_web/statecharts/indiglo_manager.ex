@@ -16,7 +16,7 @@ defmodule JswatchWeb.IndigloManager do
     {:noreply, %{state | st: Waiting, timer1: timer}}
   end
   def handle_info(:"top-left-pressed", %{ui_pid: pid} = state) do
-    GenServer.cast(pid, :update_alarm)
+    :gproc.send({:p, :l, :ui_event}, :update_alarm)
     {:noreply, state}
   end
 
